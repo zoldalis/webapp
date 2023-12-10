@@ -64,9 +64,6 @@
 			february 2022 - june 2022,  Incheon, South Korea.<br>
 			Took classes in machine learning and c++ applications development</p>
 	</div>
-
-	
-
 </main>
 <Footer />
 

@@ -21,11 +21,11 @@
     }
 
     .header {
-        background-color: #333; /* Dark background */
+        background-color: #333; 
         color: white;
         padding: 1em 2em;
         display: flex;
-        justify-content: space-between; /* Space between text and buttons */
+        justify-content: space-between;
         align-items: center;
     }
 
