@@ -2,6 +2,23 @@
 	import Header from "./Header.svelte";
 	import Footer from "./Footer.svelte";
 	import Sidebar from "./Sidebar.svelte";
+
+	document.addEventListener("DOMContentLoaded", () => {
+		const headerImage = document.querySelector(".header-image");
+
+		window.addEventListener("scroll", () => {
+			const scrollPosition =
+				window.scrollY || document.documentElement.scrollTop;
+
+			if (scrollPosition > 50) {
+				headerImage.style.transform = "translateX(-100%)";
+				headerImage.style.opacity = "0";
+			} else {
+				headerImage.style.transform = "translateX(0)";
+				headerImage.style.opacity = "1";
+			}
+		});
+	});
 </script>
 
 <Header />
@@ -23,46 +40,76 @@
 	<h1 class="left-aligned-header">Skills</h1>
 	<div class="centered-content">
 		<ul class="content-list">
-			<li>Strong knowledge of:  C++17, STL, Git, Qt, Cmake, SQL, Linux, English</li>
-			<li>Had experience with: gRPC, Rust, Python, boost, gtest, LLVM, docker</li>
+			<li>
+				Strong knowledge of: C++17, STL, Git, Qt, Cmake, SQL, Linux,
+				English
+			</li>
+			<li>
+				Had experience with: gRPC, Rust, Python, boost, gtest, LLVM,
+				docker
+			</li>
 		</ul>
 	</div>
 
 	<h1 class="left-aligned-header">Work Experience</h1>
-	
-	<h2 class="gradient-colored left-aligned-header">Baspro project / C++ programmer. <b class="gray">(october 2020 - PRESENT,  Tyumen, Russia)</b></h2>
+
+	<h2 class="gradient-colored left-aligned-header">
+		Baspro project / C++ programmer. <b class="gray"
+			>(october 2020 - PRESENT, Tyumen, Russia)</b
+		>
+	</h2>
 
 	<div class="centered-content">
 		<ul class="content-list">
 			<li>Desktop C++ applications development</li>
 			<li>Applications for GNU/Linux and MS Windows operating systems</li>
-			<li>Made solutions which involved multithreading and asynchronous programming</li>
+			<li>
+				Made solutions which involved multithreading and asynchronous
+				programming
+			</li>
 			<li>GUI development using Qt framework</li>
-			<li>Worked on ORM improvements and functionality </li>
+			<li>Worked on ORM improvements and functionality</li>
 			<li>Worked with Postgre, Sqlite, Oracle databases.</li>
-			<li>Made an automated system for deploying applications using bash, python and powershell.</li>
+			<li>
+				Made an automated system for deploying applications using bash,
+				python and powershell.
+			</li>
 			<li>Worked on distributed applications using gRPC communication</li>
 			<li>Used to write unit tests using gtest library</li>
-			<li>Developed a complex licensing system for company products  in rust using tokio framework.</li>
-			<li>Used different profiling tools like valgrind, gdb, VLD, VS profiler</li>
+			<li>
+				Developed a complex licensing system for company products in
+				rust using tokio framework.
+			</li>
+			<li>
+				Used different profiling tools like valgrind, gdb, VLD, VS
+				profiler
+			</li>
 		</ul>
 	</div>
 
 	<h1 class="left-aligned-header">Education</h1>
 
-	<h2 class="gradient-colored left-aligned-header">Tyumen State University</h2>
+	<h2 class="gradient-colored left-aligned-header">
+		Tyumen State University
+	</h2>
 	<div class="centered-content">
-			<p class="content-text"> Bachelor of science in Cybersecurity
-			september 2019 - august 2023,  Tyumen, Russia
-			Cybersecurity in networking and WEB and desktop applications</p>
+		<p class="content-text">
+			Bachelor of science in Cybersecurity september 2019 - august 2023,
+			Tyumen, Russia Cybersecurity in networking and WEB and desktop
+			applications
+		</p>
 	</div>
 
-	<h2 class="gradient-colored left-aligned-header">Incheon National University</h2>
+	<h2 class="gradient-colored left-aligned-header">
+		Incheon National University
+	</h2>
 
 	<div class="centered-content">
-		<p class="content-text"> Computer science & engineering
-			february 2022 - june 2022,  Incheon, South Korea.<br>
-			Took classes in machine learning and c++ applications development</p>
+		<p class="content-text">
+			Computer science & engineering february 2022 - june 2022, Incheon,
+			South Korea.<br />
+			Took classes in machine learning and c++ applications development
+		</p>
 	</div>
 </main>
 <Footer />
@@ -71,8 +118,8 @@
 	main {
 		text-align: center;
 		padding: 0;
-		max-width: 240px;
 		margin: 0 auto;
+		margin-top: 200px;
 	}
 
 	.content-list {
@@ -89,15 +136,25 @@
 	}
 
 	.gray {
-		color: rgb(101, 101, 101)	}
+		color: rgb(101, 101, 101);
+	}
 
 	.header-image {
 		position: absolute;
-		top: -85px; /* Adjust as necessary */
-		left: 0; /* Adjust as necessary */
-		width: 280px; /* Set the size of your image */
-		height: auto; /* Maintain aspect ratio */
-		z-index: 3; /* Ensure it overlaps or goes behind the header text */
+		top: -85px;
+		left: 0;
+		width: 280px;
+		height: auto;
+		z-index: 3;
+		transition:
+			transform 0.5s ease-out,
+			opacity 0.5s ease-out;
+		will-change: transform, opacity;
+	}
+
+	.hide-image {
+		transform: translateX(-100%);
+		opacity: 0;
 	}
 
 	.left-aligned-header {
@@ -112,8 +169,30 @@
 		padding-left: 210px;
 	}
 
-	.gradient-colored  {
-		background-image: linear-gradient(to right, rgb(96, 109, 157), white);
+	.gradient-colored {
+		background-image: linear-gradient(to right, rgb(113, 113, 113), white 2%);
+	}
+
+	.gradient-colored::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(to right, black 10%, white 50%);
+		border-radius: inherit;
+		box-sizing: border-box;
+		-webkit-mask:
+			linear-gradient(to left, transparent, black 99%) top / 100% 2px
+				no-repeat,
+			linear-gradient(to left, transparent, black 99%) bottom / 100% 2px
+				no-repeat;
+		mask:
+			linear-gradient(to left, transparent, black 99%) top / 100% 2px
+				no-repeat,
+			linear-gradient(to left, transparent, black 99%) bottom / 100% 2px
+				no-repeat;
 	}
 
 	.centered-content {
@@ -136,7 +215,32 @@
 		font-weight: 100;
 	}
 
-	@media (min-width: 640px) {
+	@media (max-width: 810px) {
+		h1 {
+			font-size: 2em;
+		}
+
+		h2 {
+			font-size: 0.8em;
+		}
+
+		.centered-content {
+			margin-left: 10%;
+			margin-right: 10%;
+			font-size: 1.6em;
+		}
+
+		.header-image {
+			top: -60px;
+			width: 200px;
+		}
+
+		.left-aligned-header {
+			padding-left: 22%;
+		}
+	}
+
+	@media (min-width: 240px) {
 		main {
 			max-width: none;
 		}

@@ -18,6 +18,7 @@
     .header-text {
         font-size: 2em;
         font-weight: bold;
+        order: 0;
     }
 
     .header {
@@ -27,7 +28,18 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-direction: row;
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        z-index: 10; 
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
+    .header-buttons {
+            margin-right: 3em;
+        }
 
     .header-button {
         background: none;
@@ -43,5 +55,32 @@
     .header-button:hover {
         background-color: white;
         color: #333;
+    }
+
+    @media (max-width: 810px) {
+
+        .header-buttons {
+            margin-bottom: 0.5em;
+        }
+
+        .header-button {
+            padding: 0.3em 0.6em;
+            margin-left: 7px; 
+            font-size: 0.9em;
+        }
+
+        .header-text {
+            font-size: 1.5em;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .header {
+            flex-direction: column;
+        }
+
+        .header-text {
+            order: 1;
+        }
     }
 </style>
