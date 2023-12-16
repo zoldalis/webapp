@@ -83,4 +83,17 @@
             order: 1;
         }
     }
+
+    @media (max-width: 455px) {
+        .header-button {
+            padding: 0.3em 0.5em;
+            margin-left: 1px; 
+            font-size: 0.7em;
+        }
+
+        .header-text {
+            font-size: 1.3em;
+            margin-left: -25px;
+        }
+    }
 </style>

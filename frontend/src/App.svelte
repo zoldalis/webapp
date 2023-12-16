@@ -10,7 +10,7 @@
 			const scrollPosition =
 				window.scrollY || document.documentElement.scrollTop;
 
-			if (scrollPosition > 50) {
+			if (scrollPosition > 30) {
 				headerImage.style.transform = "translateX(-100%)";
 				headerImage.style.opacity = "0";
 			} else {
@@ -170,7 +170,7 @@
 	}
 
 	.gradient-colored {
-		background-image: linear-gradient(to right, rgb(113, 113, 113), white 2%);
+		background-image: none;
 	}
 
 	.gradient-colored::before {
@@ -237,12 +237,31 @@
 
 		.left-aligned-header {
 			padding-left: 22%;
+			margin-top: 50px;
 		}
 	}
 
-	@media (min-width: 240px) {
-		main {
-			max-width: none;
+	@media (max-width: 400px) {
+        h1 {
+			font-size: 1.3em;
 		}
-	}
+
+		.header-image {
+			top: -42px;
+			width: 140px;
+		}
+
+		.centered-content {
+			font-size: 1.2em;
+		}
+
+		.left-aligned-header {
+			padding-left: 12%;
+		}
+
+		.gradient-colored::before {
+			background: linear-gradient(to right, black , white );
+		}
+    }
+	
 </style>
